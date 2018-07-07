@@ -6,14 +6,14 @@ sudo: required
 script:
   - bash <(curl -fsSL https://raw.githubusercontent.com/limix/liknorm/master/install)
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-      test -e $TRAVIS_BUILD_DIR/include/liknorm.h;
-      test -e $TRAVIS_BUILD_DIR/lib/libliknorm.so;
-      test -e $TRAVIS_BUILD_DIR/lib/libliknorm_static.a;
+      test -e /usr/local/include/liknorm.h;
+      test -e /usr/local/lib/libliknorm.so;
+      test -e /usr/local/lib/libliknorm_static.a;
     fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      test -e $TRAVIS_BUILD_DIR/include/liknorm.h;
-      test -e $TRAVIS_BUILD_DIR/lib/libliknorm.dylib;
-      test -e $TRAVIS_BUILD_DIR/lib/libliknorm_static.a;
+      test -e /usr/local/include/liknorm.h;
+      test -e /usr/local/lib/libliknorm.dylib;
+      test -e /usr/local/lib/libliknorm_static.a;
     fi
 notifications:
   email:
