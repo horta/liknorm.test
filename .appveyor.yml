@@ -1,0 +1,21 @@
+build: off
+image:
+- Visual Studio 2013
+- Visual Studio 2015
+- Visual Studio 2017
+
+notifications:
+  - provider: Email
+    on_build_success: false
+    on_build_failure: true
+    on_build_status_changed: false
+
+build_script:
+  - powershell -Command "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/limix/liknorm/master/install.bat', 'install.bat')" && install.bat
+
+test_script:
+  - dir "%programfiles%\\liknorm\\"
+  - if NOT exist "%programfiles%\\liknorm\\lib\\liknorm.lib" exit 1
+  - if NOT exist "%programfiles%\\liknorm\\bin\\liknorm.dll" exit 1
+  - if NOT exist "%programfiles%\\liknorm\\lib\\liknorm_static.lib" exit 1
+  - if NOT exist "%programfiles%\\liknorm\\include\\liknorm.h" exit 1
